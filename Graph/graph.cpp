@@ -49,7 +49,20 @@ FILE* fp = fopen(graphDataset, "r");
     edgeList[src][countersPerVertex[src]++] = dst;
   }
   bool isNeighbour(int src, int dst){
-    return 1;
+
+    for(int i = 0; i < edgeListSize[src]; i++){
+      if(edgeList[src][i] == dst){
+        return true;
+      }
+    }
+    
+    for(int i = 0; i < edgeListSize[dst]; i++){
+      if(edgeList[dst][i] == src){
+        return true;
+      }
+    }
+
+    return false;
   }
   int getVertices(){
     return vertices;
